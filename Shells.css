@@ -16,13 +16,9 @@ body{
     }
 }
 
-.grd{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
-.grd > main > h1{
+main > h1{
+    margin-top: 0;
     justify-self: center;
     text-align: center;
     font-size: 7vh;
@@ -32,13 +28,9 @@ body{
 }
 
 @media screen and (max-width: 700px) {
-    .grd  h1{
+    main  h1{
         font-size: large;
     }    
-}
-
-.grd > h2{
-    position: fixed;
 }
 
 
