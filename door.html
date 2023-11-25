@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <title>Библиотека Золотой академии</title>
+    <link rel='stylesheet' href="door.css">
+</head>
+
+<body>
+    <main>
+        <div id="door_back"></div>
+        <div class="grd">
+            <img id="door" src="door.svg" onclick="open_(this)"> 
+        </div>
+    </main>    
+</body>
+</html>
+
+<script>
+    function res(){
+        let w = window.innerWidth, h = window.innerHeight;
+        let door = document.getElementById("door");
+        let door_back = document.getElementById("door_back");
+
+        if(h > w){
+            door.style.height = "60vh";
+            door_back.style.height = "60vh";
+        }else{
+            door.style.height = "80vh";
+            door_back.style.height = "80vh";
+        }
+        door_back.style.width = door.width*0.99 + "px";
+        door_back.style.transform = "translate(" + (door.offsetLeft-7) + "px, 10vh )";
+        door_back.style.borderRadius = "5%";
+        
+        if(door_back.clientWidth < 1){
+            setTimeout(res, 10);
+            door_back.style.width = door.width*0.98 + "px";
+        }
+
+        console.log(door.width);
+
+    }
+
+    window.addEventListener('resize', res, true);
+    res();
+
+    function open_(door){
+        let w = window.innerWidth, h = window.innerHeight;
+        if(h > w){
+            door.style.transform = "translate(-3.25vh, 10vh) matrix3d(   \
+            0.7, 0, 0, 0.001, 0, 0.9, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)";
+        }else{
+            door.style.transform = "translate(-3.55vh, 10vh) matrix3d(   \
+            0.7, 0, 0, 0.001, 0, 0.87, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)";
+        }
+        door.style.transition = "0.5s";
+        let door_back = document.getElementById("door_back");
+        door_back.style.animationName = "more";
+        setTimeout(()=>{
+            document.getElementsByTagName("body")[0].style.background="#fff";
+            document.getElementsByTagName("main")[0].style.opacity=0;
+            document.getElementsByTagName("main")[0].style.transition="1.5s";
+            
+            setTimeout( ()=>{
+                    window.location.href = 'Shells.html';
+                }, 1500);
+        }, 500);
+    }
+
+    
+    
+</script>

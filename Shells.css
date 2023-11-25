@@ -1,0 +1,185 @@
+body{
+    animation: appear;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+    from{
+        background: #fff;
+        opacity: 0;
+
+    }
+    to{
+        background: #999;
+        opacity: 1;
+    }
+}
+
+.grd{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.grd > main > h1{
+    justify-self: center;
+    text-align: center;
+    font-size: 7vh;
+    color: #ffd700;
+    text-shadow: 5px 5px 10px #000,
+    5px 5px  #000;
+}
+
+@media screen and (max-width: 700px) {
+    .grd  h1{
+        font-size: large;
+    }    
+}
+
+.grd > h2{
+    position: fixed;
+}
+
+
+.book{
+    width: max-content;
+    height: max-content;
+}
+
+.book .cover{
+    width: min(7.5vw, 100px);
+    position: absolute;
+}
+.book .sheet{
+    width: min(7.5vw, 100px);
+}
+
+
+.book:hover .sheet{
+    filter: sepia(10000);
+    animation-name: mvsheet;
+    animation-duration: 0.25s;
+    animation-timing-function: linear;
+    z-index: -10;
+    animation-fill-mode: forwards;
+}
+
+@keyframes mvsheet{ to{ transform: translateX(50%); } }
+
+.book:hover .cover{
+    animation: rotpage;
+    animation-duration: 0.25s;
+    animation-timing-function: linear;
+    z-index: 2;
+    animation-fill-mode: forwards;
+}
+
+@keyframes rotpage {
+    0%{ transform:
+         translateX(-0%) 
+         scale(1, 1); }
+    50%{ transform:
+         translateX(calc(-50% + 25%)) 
+         scale(0, 1);}
+    100%{ transform: 
+        translateX(calc(-100% + 50% + 0.2vw))
+         scale(-1, 1); 
+         content: url("sheet.png");
+         filter: sepia(1); 
+        }
+}
+
+
+.galer{
+    display: grid;
+    grid-template-columns: repeat(3, 20vw);
+    grid-template-rows: repeat(4, calc (10vw + 10px) );
+    justify-content: center;
+
+}
+
+.book_cont{
+    display: flex;
+    justify-content: center;
+}
+
+#book1{
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+#book2{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.book_cont .book::before{
+    content:"";
+    display: block;
+    height: 0.2vw;
+}
+
+
+#book1 .book::before{
+    content:"";
+    display: block;
+    height: 5vw;
+}
+
+#book2 .book::before{
+    content:"";
+    display: block;
+    height: 3vw;
+}
+
+#book2 .book>*{
+    width: min(10vw, 150px);
+}
+
+#book7{
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.book_cont:hover{
+    background: 
+        /* linear-gradient(rgba(0,100,0,1) 50%, #000, rgba(0,0,0,0)), */
+        radial-gradient(circle, #fff 12%, rgba(0,0,0,0), rgba(0,0,0,0));
+    border-radius: 1vw;
+}
+
+#book1 .cover{
+    filter: hue-rotate(150deg);
+}#book6 .cover{
+    filter: hue-rotate(561deg);
+}#book7 .cover{
+    filter: hue-rotate(789deg);
+}#book4 .cover{
+    filter: hue-rotate(1000deg);
+}#book5 .cover{
+    filter: hue-rotate(180deg);
+}#book2 .cover{
+    filter: hue-rotate(64deg) brightness(400%);
+}
+
+
+.book_cont p{
+    margin: 0;
+}
+
+.book_cont a, .book_cont a:active, .book_cont a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+
+@media screen and (min-width: 700px) {
+    .book_cont p{
+        font-size: x-large;
+    }        
+}
