@@ -158,11 +158,15 @@ main > h1{
         grid-template-columns: repeat(2, 40vw);
     }
     main h1 {
+        color: #f00;
         font-size: medium;
     }
 }
 
 @media screen and (min-width: 700px) {
+    main h1 {
+        color: #0f0;
+    }
     #book1{
         grid-row-start: 1;
         grid-row-end: 3;
