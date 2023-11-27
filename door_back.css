@@ -1,0 +1,53 @@
+
+body{
+    background: #aaa;
+
+}
+
+svg{
+    width: 100px;
+    height: 100px;
+
+}
+
+img{
+    height: 80vh;
+    transform: translateY(10vh);
+    transform-style: preserve-3d;
+}
+
+
+.grd{
+    height: 90vh;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+.padd{
+    height: 5vh;
+}
+
+#door_back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #eee;
+}
+
+#door_back{
+    /* box-shadow: 0px 0px 10px 10px #000; */
+    /* animation-name: more; */
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes more {
+    0%{
+        box-shadow: 0 0 0 0 0 #000;
+    }
+
+    100%{
+        box-shadow: 0 0 50vmax 100vmax #000;
+    }
+}

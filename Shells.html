@@ -73,3 +73,14 @@
     </main>
 </body>
 </html>
+
+<script>
+    let items = document.getElementById("book2").querySelectorAll("img");
+    for(let i=0;i<items.length;i++){
+        items[i].style.width = (1.5 * items[i].clientWidth) + "px";
+    }
+    setInterval(() => {
+        items[0].style.left = items[0].offsetLeft+1 + "px";
+        
+    }, interval);
+</script>

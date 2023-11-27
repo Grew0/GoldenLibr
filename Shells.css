@@ -106,6 +106,7 @@ main > h1{
     grid-row-end: 3;
     grid-column-start: 2;
     grid-column-end: 4;
+
 }
 
 .book_cont .book::before{
@@ -127,9 +128,9 @@ main > h1{
     height: 3vw;
 }
 
-#book2 .book>*{
-    width: min(10vw, 150px);
-}
+/* #book2 .cover, #book2 .sheet{
+    width: min(15vw, 150px);
+} */
 
 #book7{
     grid-row-start: 4;
