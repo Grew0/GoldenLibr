@@ -151,9 +151,9 @@ main > h1{
         display: grid;
         grid-template-columns: repeat(2, 40vw);
     }
-    /* main h1 {
-        font-size: medium;
-    } */
+    main > h1 {
+        font-size: xx-large;
+    }
 }
 
 @media screen and (orientation: landscape) {
