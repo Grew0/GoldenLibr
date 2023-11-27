@@ -152,7 +152,7 @@ main > h1{
         grid-template-columns: repeat(2, 40vw);
     }
     main > h1 {
-        font-size: xx-large;
+        font-size: larger;
     }
 }
 
