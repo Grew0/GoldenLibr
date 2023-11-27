@@ -27,12 +27,6 @@ main > h1{
     5px 5px  #000;
 }
 
-@media screen and (max-width: 700px) {
-    main  h1{
-        font-size: large;
-    }    
-}
-
 
 .book{
     width: max-content;
@@ -96,6 +90,12 @@ main > h1{
     grid-template-rows: repeat(4, calc (10vw + 10px) );
     justify-content: center;
 
+}
+
+@media screen and (max-width: 700px) {
+    .galer{
+        grid-template-columns: auto;
+    }
 }
 
 .book_cont{
