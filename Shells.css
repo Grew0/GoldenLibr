@@ -152,7 +152,7 @@ main > h1{
     }        
 } */
 
-@media screen and (width < 700px) {
+@media screen and (orientation: portrait) {
     .galer{
         display: grid;
         grid-template-columns: repeat(2, 40vw);
@@ -163,7 +163,7 @@ main > h1{
     }
 }
 
-@media screen and (width > 700px) {
+@media screen and (orientation: landscape) {
     main h1 {
         color: #0f0;
     }
