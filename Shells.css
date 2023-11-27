@@ -47,6 +47,9 @@ main > h1{
     width: min(7.5vw, 100px);
 }
 
+.book_cont:hover a{
+    filter: drop-shadow(#000 0.0vw 0.0vw 0.5vw);
+}
 
 .book:hover .sheet{
     filter: sepia(10000);
@@ -57,28 +60,32 @@ main > h1{
     animation-fill-mode: forwards;
 }
 
-@keyframes mvsheet{ to{ transform: translateX(50%); } }
+@keyframes mvsheet{ to{ transform: translateX(47%); } }
 
 .book:hover .cover{
     animation: rotpage;
     animation-duration: 0.25s;
     animation-timing-function: linear;
-    z-index: 2;
     animation-fill-mode: forwards;
+    z-index: 2;
+    transform-origin: left;
 }
 
 @keyframes rotpage {
     0%{ transform:
-         translateX(-0%) 
-         scale(1, 1); }
+        perspective(600vw)
+        translateX(0%) 
+        rotateY(0deg); }
     50%{ transform:
-         translateX(calc(-50% + 25%)) 
-         scale(0, 1);}
+        perspective(60vw)
+        translateX(26.5%) 
+        rotateY(-90deg);}
     100%{ transform: 
-        translateX(calc(-100% + 50% + 0.2vw))
-         scale(-1, 1); 
-         content: url("sheet.png");
-         filter: sepia(1); 
+        perspective(60vw)
+        translateX(53%)
+        rotateY(-180deg);; 
+        content: url("sheet.svg");
+        filter: sepia(1); 
         }
 }
 
@@ -128,22 +135,15 @@ main > h1{
     height: 3vw;
 }
 
-/* #book2 .cover, #book2 .sheet{
+#book2 .cover, #book2 .sheet{
     width: min(15vw, 150px);
-} */
+}
 
 #book7{
     grid-row-start: 4;
     grid-row-end: 5;
     grid-column-start: 2;
     grid-column-end: 4;
-}
-
-.book_cont:hover{
-    background: 
-        /* linear-gradient(rgba(0,100,0,1) 50%, #000, rgba(0,0,0,0)), */
-        radial-gradient(circle, #fff 12%, rgba(0,0,0,0), rgba(0,0,0,0));
-    border-radius: 1vw;
 }
 
 #book1 .cover{
