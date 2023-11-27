@@ -178,5 +178,6 @@ main > h1{
     }
     main h1 {
         font-size: small;
+        color: red;
     }
 }
