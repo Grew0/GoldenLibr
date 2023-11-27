@@ -174,5 +174,6 @@ main > h1{
 @media screen and (min-width: 700px) {
     .book_cont p{
         font-size: x-large;
+        color: red;
     }        
 }
