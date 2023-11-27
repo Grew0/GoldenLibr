@@ -152,7 +152,7 @@ main > h1{
     }        
 } */
 
-@media screen and (max-width: 700px) {
+@media screen and (width < 700px) {
     .galer{
         display: grid;
         grid-template-columns: repeat(2, 40vw);
@@ -163,7 +163,7 @@ main > h1{
     }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (width > 700px) {
     main h1 {
         color: #0f0;
     }
