@@ -92,12 +92,6 @@ main > h1{
 
 }
 
-@media screen and (max-width: 700px) {
-    .galer{
-        grid-template-columns: auto;
-    }
-}
-
 .book_cont{
     display: flex;
     justify-content: center;
@@ -171,8 +165,17 @@ main > h1{
 }
 
 
-@media screen and (min-width: 700px) {
+/* @media screen and (min-width: 700px) {
     .book_cont p{
         font-size: x-large;
     }        
+} */
+
+@media screen and (max-width: 700px) {
+    .galer{
+        grid-template-columns: auto;
+    }
+    main h1 {
+        font-size: small;
+    }
 }
