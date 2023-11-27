@@ -145,28 +145,18 @@ main > h1{
 }
 
 
-/* @media screen and (min-width: 700px) {
-    .book_cont p{
-        font-size: x-large;
-        color: red;
-    }        
-} */
 
 @media screen and (orientation: portrait) {
     .galer{
         display: grid;
         grid-template-columns: repeat(2, 40vw);
     }
-    main h1 {
-        color: #f00;
+    /* main h1 {
         font-size: medium;
-    }
+    } */
 }
 
 @media screen and (orientation: landscape) {
-    main h1 {
-        color: #0f0;
-    }
     #book1{
         grid-row-start: 1;
         grid-row-end: 3;
