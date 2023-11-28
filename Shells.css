@@ -181,4 +181,16 @@ main > h1{
         width: calc( min(7.5vmax, 150px) * 1.5);
     }
     
+    #book1 .book::before{
+        content:"";
+        display: block;
+        height: 5vw;
+    }
+    
+    #book2 .book::before{
+        content:"";
+        display: block;
+        height: 3vw;
+    }
+    
 }
