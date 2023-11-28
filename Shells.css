@@ -116,9 +116,6 @@ main > h1{
     height: 3vw;
 }
 
-#book2 .cover, #book2 .sheet{
-    width: calc( min(7.5vmax, 150px) * 1.5);
-}
 
 #book1 .cover{
     filter: hue-rotate(150deg);
@@ -178,6 +175,10 @@ main > h1{
         grid-row-end: 5;
         grid-column-start: 2;
         grid-column-end: 4;
+    }
+
+    #book2 .cover, #book2 .sheet{
+        width: calc( min(7.5vmax, 150px) * 1.5);
     }
     
 }
