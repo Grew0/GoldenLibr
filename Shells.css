@@ -130,6 +130,27 @@ main > h1{
 }
 
 
+footer{
+    margin-top: 20vh;
+    border: #000 1px solid  ;
+    margin-bottom: 10vh;
+}
+
+footer address{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 5vmin 0;
+}
+
+footer > h3{
+    margin-left: 10vw;
+}
+
+footer address > *{
+    display: block;
+}
+
 
 @media screen and (orientation: portrait) {
     .galer{
@@ -137,10 +158,29 @@ main > h1{
         grid-template-columns: repeat(2, 40vw);
     }
     main > h1 {
-        font-size: 50pt;
+        font-size: 45pt;
+        margin: 0 10px 15vmin 10px;
+    }
+    main{
+        padding-top: 20px;
     }
     .book_cont p{
         font-size: 30pt;
+    }
+
+    footer address{
+        flex-direction: column;
+
+    }
+
+    footer * {
+        font-size: 20pt;
+    }
+
+
+    footer address * {
+        flex-direction: column;
+        margin: 1vmin;
     }
 }
 
