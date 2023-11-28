@@ -137,6 +137,7 @@ main > h1{
 
 .book_cont p{
     margin: 0;
+    font-size: large;
 }
 
 .book_cont a, .book_cont a:active, .book_cont a:hover{
@@ -152,10 +153,10 @@ main > h1{
         grid-template-columns: repeat(2, 40vw);
     }
     main > h1 {
-        font-size: 40pt;
+        font-size: 60pt;
     }
     .book_cont p{
-        font-size: 20pt;
+        font-size: 30pt;
     }
 }
 
