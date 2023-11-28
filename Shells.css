@@ -137,7 +137,7 @@ main > h1{
         grid-template-columns: repeat(2, 40vw);
     }
     main > h1 {
-        font-size: 60pt;
+        font-size: 50pt;
     }
     .book_cont p{
         font-size: 30pt;
