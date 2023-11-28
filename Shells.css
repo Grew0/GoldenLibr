@@ -34,11 +34,11 @@ main > h1{
 }
 
 .book .cover{
-    width: min(7.5vmax, 100px);
+    width: min(7.5vmax, 150px);
     position: absolute;
 }
 .book .sheet{
-    width: min(7.5vmax, 100px);
+    width: min(7.5vmax, 150px);
 }
 
 .book_cont:hover a{
@@ -117,7 +117,7 @@ main > h1{
 }
 
 #book2 .cover, #book2 .sheet{
-    width: calc( min(7.5vmax, 100px) * 1.5);
+    width: calc( min(7.5vmax, 150px) * 1.5);
 }
 
 #book1 .cover{
@@ -152,7 +152,7 @@ main > h1{
         grid-template-columns: repeat(2, 40vw);
     }
     main > h1 {
-        font-size: x-large;
+        font-size: 40pt;
     }
 }
 
