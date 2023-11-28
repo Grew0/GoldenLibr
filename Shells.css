@@ -104,19 +104,6 @@ main > h1{
 }
 
 
-#book1 .book::before{
-    content:"";
-    display: block;
-    height: 5vw;
-}
-
-#book2 .book::before{
-    content:"";
-    display: block;
-    height: 3vw;
-}
-
-
 #book1 .cover{
     filter: hue-rotate(150deg);
 }#book6 .cover{
@@ -192,5 +179,18 @@ main > h1{
         display: block;
         height: 3vw;
     }
+
+    #book1 .book::before{
+        content:"";
+        display: block;
+        height: 5vw;
+    }
+    
+    #book2 .book::before{
+        content:"";
+        display: block;
+        height: 3vw;
+    }
+    
     
 }
