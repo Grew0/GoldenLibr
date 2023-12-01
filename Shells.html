@@ -7,6 +7,12 @@
     <link rel='stylesheet' href='Shells.css'>
 </head>
 <body style="margin: 0;">
+    <div id="iframeback" onclick="iframe_controller.closeifr()"></div>
+    <div id="outifr">
+        <iframe id="ifr">
+        </iframe>
+    </div>
+
     <img src="paper.jpg"
         style="
             width: 110vw;
@@ -84,5 +90,69 @@
 
 </html>
 
-<script>
+<script>    
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+
+    let items = {
+        "book2": "res/ПОУМ/ПОУМ.html"
+    };
+
+    let iframe_controller = null;
+
+    if(w >= h){
+        iframe_controller = {
+            ifr: document.getElementById("ifr"), 
+            outifr: document.getElementById("outifr"),
+            ifrback: document.getElementById("iframeback"),
+
+            open: function(res){
+                console.log("open");
+                iframe_controller.ifr.src = res
+                iframe_controller.outifr.style.display = "block";
+                iframe_controller.ifrback.style.display = "block";
+                iframe_controller.outifr.style.animationName = "appear2";
+                iframe_controller.ifrback.style.animationName = "appear2";
+                iframe_controller.outifr.style.marginLeft = "calc(" + window.innerWidth/2 +  "px - 30vw)";                
+            },
+
+            closeifr: function(){
+                console.log("close");
+                iframe_controller.outifr.style.animationName = "disappear2";
+                iframe_controller.ifrback.style.animationName = "disappear2";
+                setTimeout(
+                    ()=>{
+                        iframe_controller.outifr.style.display = "none";
+                        iframe_controller.ifrback.style.display = "none";
+                    }, 250
+                );
+            }
+
+        };
+        
+        window.addEventListener('resize', ()=>{
+            iframe_controller.outifr.style.marginLeft = "calc(" + window.innerWidth/2 +  "px - 30vw)";
+        });
+
+        for(let key in items){
+            let item = document.getElementById(key);
+            item.querySelector("a").onclick = function(){
+                iframe_controller.open(items[key])
+            };
+        }
+
+        window.onmessage = function(event){
+            if(event.data == "close_window"){
+                iframe_controller.closeifr();
+            }
+        }
+    }else{
+        for(let key in items){
+            console.log(key, items[key]);
+            let item = document.getElementById(key);
+            item.querySelector("a").href = items[key];
+        }
+    }
+
+    
 </script>

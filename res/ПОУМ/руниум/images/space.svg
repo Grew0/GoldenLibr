@@ -1,0 +1,21 @@
+<svg width="100" height="100"
+  xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <rect 
+    x="0" y="0"
+    width="100" height="100" 
+    fill="#888"
+    />
+  <path
+    d="
+    M 50 50 l 0 -35 l 17.32 10 l 0 17.5
+    M 50 50 l 30.31 17.5 l -15.155 8.75 l -15.155 -8.75 
+    M 50 50 l -30.31 17.5 l 0 -20 l 15.155 -8.75
+    "
+    fill="None"
+    stroke="#2740d8"
+    stroke-width='10'
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    />
+
+</svg>

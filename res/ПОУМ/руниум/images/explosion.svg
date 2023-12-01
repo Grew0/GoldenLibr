@@ -1,0 +1,20 @@
+<svg width="100" height="100"
+  xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <rect 
+    x="0" y="0"
+    width="100" height="100" 
+    fill="#888"
+    />
+    
+  <path
+    d="
+      M 40 60 C 20 60 20 20 70 20 l -20 -10
+      M 60 40 C 80 40 80 80 30 80 l 20 10
+    "
+    fill="None"
+    stroke="#000"
+    stroke-width='10'
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    />
+</svg>
