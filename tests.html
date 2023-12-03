@@ -1,29 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rotating Square</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    #square {
-        width: 100px;
-        height: 100px;
-        background-color: blue;
-        transform-origin: left;
-        transform: perspective(100px) rotateY(50deg);
-    }
-
-  </style>
 </head>
-<body>
-  <div id="square"></div>
+
+<body style="background: #f00">
+    <main>
+        <canvas id="canvas" width="500px" height="500px"></canvas>
+        <button onclick="drawer.err = !drawer.err">Erraser</button>
+    </main>    
 </body>
 </html>
+
+<script>
+    let canv = document.getElementById("canvas");
+    let ctx = canv.getContext("2d");
+    ctx.willReadFrequently = true;
+    console.log(ctx.getContextAttributes())
+    
+    let drawer = {
+        prevx: -1,
+        prevy: -1,
+        isdrawing: false,
+        draw_circle: function(x, y){
+            let r = 5;
+            if(this.err){
+                r = Number.parseInt(r * 2);
+                let img = ctx.getImageData(0, 0, canv.width, canv.height);
+                for(let i=-r;i<=r;i++){
+                    for(let j=-r;j<=r;j++){
+                        if(i*i+j*j > r*r)continue;
+                        if(i+x < 0 || j+y < 0 || i+x >= canv.width || j+y >= canv.height)continue;
+                        img.data[(i+x+(j+y)*canv.width)*4+3]=0;
+                    }
+                }
+
+                ctx.putImageData(img, 0, 0);
+            }else{
+                ctx.beginPath();
+                ctx.arc(x, y, r, 0, 2 * Math.PI, true);
+                ctx.fill();
+            }
+        },
+
+        drawPath: function(x, y){
+            if(!this.isdrawing)return;
+            if(this.prevx == -1 && this.prevy == -1){
+                this.prevx = x;
+                this.prevy = y;
+                this.draw_circle(x, y);
+            }else{
+                let dx = x-this.prevx, dy = y-this.prevy;
+                let dist = Math.sqrt(dx*dx+dy*dy);
+                for(let i=0;i<dist;i++){
+                    this.draw_circle(this.prevx+dx*i/dist, this.prevy+dy*i/dist);
+                }
+                this.prevx = x;
+                this.prevy = y;
+            }
+        },
+        err: false
+
+
+    };
+
+
+    canv.addEventListener(
+        'mousedown', (event)=>{
+            drawer.isdrawing=true;
+            drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
+        }
+    )
+    document.addEventListener(
+        'mouseup', (event)=>{
+            drawer.isdrawing=false;
+            drawer.prevx = drawer.prevy = -1;
+        }
+    )
+    document.addEventListener(
+        'mousemove',
+        (event)=>{
+            drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
+        }
+    );
+</script>

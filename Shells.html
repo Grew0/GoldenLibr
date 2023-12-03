@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,17 +90,13 @@
 </html>
 
 <script>    
-    let w = window.innerWidth;
-    let h = window.innerHeight;
 
     let items = {
         "book2": "res/ПОУМ/ПОУМ.html"
     };
 
     let iframe_controller = null;
-
-    if(w >= h){
-        iframe_controller = {
+    let iframe_controller_backup = {
             ifr: document.getElementById("ifr"), 
             outifr: document.getElementById("outifr"),
             ifrback: document.getElementById("iframeback"),
@@ -129,30 +124,57 @@
             }
 
         };
-        
-        window.addEventListener('resize', ()=>{
-            iframe_controller.outifr.style.marginLeft = "calc(" + window.innerWidth/2 +  "px - 30vw)";
-        });
+    function checksize(){
+        let w = window.innerWidth;
+        let h = window.innerHeight;
 
-        for(let key in items){
-            let item = document.getElementById(key);
-            item.querySelector("a").onclick = function(){
-                iframe_controller.open(items[key])
-            };
-        }
+        if(w >= h){
+            window.onmessage = function(event){
+                if(event.data == "close_window"){
+                    iframe_controller.closeifr();
+                }
+                if(event.data == "is phone" && iframe_controller != null){
+                    console.log(iframe_controller)
+                    ifr.contentWindow.postMessage("from iframe", "*");
+                }
+            }
 
-        window.onmessage = function(event){
-            if(event.data == "close_window"){
-                iframe_controller.closeifr();
+            document.cookie = "user=Fun";
+            
+            if(iframe_controller == null)
+                iframe_controller = iframe_controller_backup;
+                // else{
+                //     //document.cookie = "user = " + iframe_controller.toString();
+                //     console.log(document.cookie);
+                // }
+
+            
+            for(let key in items){
+                let item = document.getElementById(key);
+                item.querySelector("a").onclick = function(){
+                    iframe_controller.open(items[key])
+                };
+                item.querySelector("a").removeAttribute("href");
+            }
+        }else{
+            iframe_controller = null;
+
+            for(let key in items){
+                console.log(key, items[key]);
+                let item = document.getElementById(key);
+                item.querySelector("a").href = items[key];
             }
         }
-    }else{
-        for(let key in items){
-            console.log(key, items[key]);
-            let item = document.getElementById(key);
-            item.querySelector("a").href = items[key];
-        }
+
     }
+    checksize();
+    window.addEventListener('resize', ()=>{
+        checksize();
+        iframe_controller_backup.outifr.style.marginLeft = "calc(" + window.innerWidth/2 +  "px - 30vw)";
+    });
+
+
+
 
     
 </script>

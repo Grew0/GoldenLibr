@@ -250,6 +250,7 @@ footer address > *{
 #outifr{
     display: none;
     position: fixed;
+    padding: 5px;
     width: 60vw;
     height: 100vh;
     z-index: 10000;

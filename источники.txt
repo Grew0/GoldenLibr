@@ -1,1 +1,11 @@
 https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
+
+02.12.2023
+https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+https://developer.mozilla.org/en-US/docs/Web/API/Location/origin
+https://habr.com/ru/articles/488516/
+https://developer.mozilla.org/ru/docs/Web/API/Window/postMessage
+https://stackoverflow.com/questions/1088544/get-element-from-within-an-iframe
+https://learn.javascript.ru/cookie?ysclid=lpn48ohoe7431985550
+https://loftschool.com/blog/posts/kak-podklyuchit-javascript-k-html
+https://stackoverflow.com/questions/5292372/how-to-pass-parameters-to-a-script-tag
