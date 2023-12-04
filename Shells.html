@@ -22,20 +22,20 @@
         "
     >
     <main>
-        <h1>Добро пожаловать в филиал<br>библиотеки Золотой академии</h1>    
+        <h1>Добро пожаловать в филиал<div></div>библиотеки Золотой академии</h1>    
         <div class="galer">            
             <div class="book_cont" id="book1"><div class="book">
                 <a href="door.html">
                     <img src="cover.svg" class="cover">
                     <img src="sheet.svg" class="sheet">
-                    <p>Поум</p>
+                    <p>Назад к двери</p>
                 </a>
             </div></div>
             <div class="book_cont" id="book2"><div class="book">
                 <a>
                     <img src="cover.svg" class="cover">
                     <img src="sheet.svg" class="sheet">
-                    <p>Поум</p>
+                    <p>ПОУМ</p>
                 </a>
             </div></div>
             <div class="book_cont" id="book3"><div class="book">
@@ -166,15 +166,18 @@
             }
         }
 
+
+        // let allbooks = document.getElementsByClassName("book");
+        // for(let i=0;i<allbooks.length;i++){
+        //     let p = allbooks[i].querySelector('a').querySelector('p');
+        //     p.style.left = allbooks[i].querySelector('a').offsetLeft + "px";
+        // }
+
     }
     checksize();
     window.addEventListener('resize', ()=>{
         checksize();
         iframe_controller_backup.outifr.style.marginLeft = "calc(" + window.innerWidth/2 +  "px - 30vw)";
     });
-
-
-
-
     
 </script>

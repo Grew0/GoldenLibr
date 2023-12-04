@@ -34,10 +34,9 @@ main > h1{
 }
 
 .book .cover{
-    width: min(7.5vmax, 150px);
     position: absolute;
 }
-.book .sheet{
+.book .sheet, .book .cover, .book p{
     width: min(7.5vmax, 150px);
 }
 
@@ -122,11 +121,20 @@ main > h1{
 .book_cont p{
     margin: 0;
     font-size: large;
+    text-align: center;
 }
 
 .book_cont a, .book_cont a:active, .book_cont a:hover{
     text-decoration: none;
     color: black;
+}
+
+.book a::after{
+    content: "Lol";
+    height: calc(2em);
+    opacity: 0;
+    display: block;
+    position: static;
 }
 
 
@@ -153,19 +161,37 @@ footer address > *{
 
 
 @media screen and (orientation: portrait) {
+    .book a::after{
+        content: "Lol";
+        height: calc(4em);
+        opacity: 0;
+        display: block;
+        position: static;
+    }
+    
+    .book .cover, .book .sheet, .book p{
+        width: 20vw;
+    }
+    
     .galer{
         display: grid;
         grid-template-columns: repeat(2, 40vw);
     }
     main > h1 {
-        font-size: min(5vw, 45pt);
+        font-size: 50pt;
         margin: 0 10px 15vmin 10px;
+    }
+    main > h1 > div{
+        display: inline;
+    }
+    main > h1 > div::before{
+        content: " ";
     }
     main{
         padding-top: 20px;
     }
     .book_cont p{
-        font-size: min(2vw, 30pt);
+        font-size: min(5vw, 30pt);
     }
 
     footer address{
@@ -174,7 +200,7 @@ footer address > *{
     }
 
     footer * {
-        font-size: clamp(10pt , 2vw, 20pt);
+        font-size: clamp(15pt , 5vw, 30pt);
     }
 
 
@@ -208,7 +234,7 @@ footer address > *{
         grid-column-end: 4;
     }
 
-    #book2 .cover, #book2 .sheet{
+    #book2 .cover, #book2 .sheet, #book2 p{
         width: calc( min(7.5vmax, 150px) * 1.5);
     }
     
