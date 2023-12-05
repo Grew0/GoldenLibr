@@ -27,6 +27,9 @@
 </html>
 
 <style>
+    *{
+        touch-action: none;
+    }
     button{
         padding: 0;
         margin-left: 10px;
@@ -121,8 +124,9 @@
 
     canv.addEventListener(
         'touchstart', (event)=>{
+            let tch = event.changedTouches[0];
             drawer.isdrawing=true;
-            drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
+            drawer.drawPath(tch.pageX-canv.offsetLeft, tch.pageY-canv.offsetTop);
         }
     )
     document.addEventListener(
@@ -134,7 +138,9 @@
     document.addEventListener(
         'touchmove',
         (event)=>{
-            drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
+            console.log("wtf");
+            let tch = event.changedTouches[0];
+            drawer.drawPath(tch.pageX-canv.offsetLeft, tch.pageY-canv.offsetTop);
         }
     );
 
