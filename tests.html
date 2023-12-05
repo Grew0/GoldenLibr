@@ -117,4 +117,25 @@
             drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
         }
     );
+
+
+    canv.addEventListener(
+        'touchstart', (event)=>{
+            drawer.isdrawing=true;
+            drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
+        }
+    )
+    document.addEventListener(
+        'touchend', (event)=>{
+            drawer.isdrawing=false;
+            drawer.prevx = drawer.prevy = -1;
+        }
+    )
+    document.addEventListener(
+        'touchmove',
+        (event)=>{
+            drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
+        }
+    );
+
 </script>
