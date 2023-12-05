@@ -3,16 +3,51 @@
 <head>
 </head>
 
-<body style="background: #f00">
+<body style="margin: 0;">
     <main>
-        <canvas id="canvas" width="500px" height="500px"></canvas>
-        <button onclick="drawer.err = !drawer.err">Erraser</button>
+        <img style="position: absolute; z-index: -1; width: 100vw; height: 100vh;" src="paper.jpg">
+        <div style="position: absolute;">
+            <button> <img src="pen.svg" style="width: 100%; height: 100%;" onclick="
+                drawer.err = !drawer.err;
+                this.setAttribute('src', (drawer.err? 'erraser.svg': 'pen.svg'));
+                "> </button>
+            <button><img src="deleteall.svg" style="width: 100%; height: 100%;"
+                onclick=" 
+                    let qwer = ctx.getImageData(0, 0, canv.width, canv.height);
+                    for(let i=0;i<qwer.data.length;i++){
+                        qwer.data[i] = 0;
+                    }
+                    ctx.putImageData(qwer, 0, 0);
+                "
+                ></button>    
+        </div>
+        <canvas id="canvas" ></canvas>
     </main>    
 </body>
 </html>
 
+<style>
+    button{
+        padding: 0;
+        margin-left: 10px;
+        margin-top: 5px;
+        width: 10vmin;
+        height: 10vmin;
+        border: 0;
+        background: 0;
+    }
+</style>
+
 <script>
     let canv = document.getElementById("canvas");
+    canv.setAttribute("width", window.innerWidth-5);
+    canv.setAttribute("height", window.innerHeight-5);
+
+    window.addEventListener("resize", ()=>{
+        canv.setAttribute("width", window.innerWidth-5);
+        canv.setAttribute("height", window.innerHeight-5);
+    });
+
     let ctx = canv.getContext("2d");
     ctx.willReadFrequently = true;
     console.log(ctx.getContextAttributes())
