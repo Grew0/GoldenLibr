@@ -4,162 +4,55 @@
 </head>
 
 <body style="margin: 0;">
-    <main>
-        <img style="position: absolute; z-index: -1; width: 100vw; height: 100vh;" src="paper.jpg">
-        <div style="position: absolute;">
-            <button> <img src="pen.svg" style="width: 100%; height: 100%;" onclick="
-                drawer.err = !drawer.err;
-                this.setAttribute('src', (drawer.err? 'erraser.svg': 'pen.svg'));
-                "> </button>
-            <button><img src="deleteall.svg" style="width: 100%; height: 100%;"
-                onclick=" 
-                    let qwer = ctx.getImageData(0, 0, canv.width, canv.height);
-                    for(let i=0;i<qwer.data.length;i++){
-                        qwer.data[i] = 0;
-                    }
-                    ctx.putImageData(qwer, 0, 0);
-                "
-                ></button>    
-        </div>
-        <canvas id="canvas" ></canvas>
-    </main>    
+    <img src="paper.jpg">
+    <div id="board"></div>
 </body>
 </html>
 
 <style>
     *{
-        touch-action: none;
+        position: fixed;
     }
-    button{
-        padding: 0;
-        margin-left: 10px;
-        margin-top: 5px;
-        width: 10vmin;
-        height: 10vmin;
-        border: 0;
-        background: 0;
+    img{
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #board{
+        border: 7px #000 solid;
+        border-radius: 5px;
     }
 </style>
 
-<script>
-    let canv = document.getElementById("canvas");
-    canv.setAttribute("width", window.innerWidth-5);
-    canv.setAttribute("height", window.innerHeight-5);
+<script> 
+    let scaleParam = 1000000;
+    scaleParam = Math.min(scaleParam, window.innerHeight*0.9/16);
+    scaleParam = Math.min(scaleParam, window.innerWidth*0.9/9);
 
-    window.addEventListener("resize", ()=>{
-        canv.setAttribute("width", window.innerWidth-5);
-        canv.setAttribute("height", window.innerHeight-5);
-    });
-
-    let ctx = canv.getContext("2d");
-    ctx.willReadFrequently = true;
-    console.log(ctx.getContextAttributes())
-    
-    let drawer = {
-        prevx: -1,
-        prevy: -1,
-        isdrawing: false,
-        draw_circle: function(x, y){
-            let r = 5;
-            if(this.err){
-                // r = Number.parseInt(r * 2);
-                // let img = ctx.getImageData(0, 0, canv.width, canv.height);
-                // for(let i=-r;i<=r;i++){
-                //     for(let j=-r;j<=r;j++){
-                //         if(i*i+j*j > r*r)continue;
-                //         if(i+x < 0 || j+y < 0 || i+x >= canv.width || j+y >= canv.height)continue;
-                //         img.data[(i+x+(j+y)*canv.width)*4+3]=0;
-                //     }
-                // }
-
-                // ctx.putImageData(img, 0, 0);
-                r = Number.parseInt(r * 2);
-                ctx.beginPath();
-                ctx.arc(x, y, r, 0, 2 * Math.PI, true);
-                ctx.fillStyle = "#fff";
-                ctx.fill();
-            }else{
-                ctx.beginPath();
-                ctx.arc(x, y, r, 0, 2 * Math.PI, true);
-                ctx.fillStyle = "#000";
-                ctx.fill();
-            }
-        },
-
-        drawPath: function(x, y){
-            if(!this.isdrawing)return;
-            if(this.prevx == -1 && this.prevy == -1){
-                this.prevx = x;
-                this.prevy = y;
-                this.draw_circle(x, y);
-            }else{
-                let dx = x-this.prevx, dy = y-this.prevy;
-                let dist = Math.sqrt(dx*dx+dy*dy);
-                for(let i=0;i<dist;i++){
-                    this.draw_circle(this.prevx+dx*i/dist, this.prevy+dy*i/dist);
-                }
-                this.prevx = x;
-                this.prevy = y;
-            }
-        },
-        err: false,
-
-        clear: function(){
-            let img = ctx.getImageData(0, 0, canv.width, canv.height);
-            for(let i=0;i<img.data.length;i+=4){
-                if(img.data[i] == 255 && img.data[i+1] == 255 && img.data[i+2] == 255){
-                    img.data[i] = img.data[i+1] = img.data[i+2] = img.data[i+3] = 0;
-                }
-            }
-
-            ctx.putImageData(img, 0, 0);
-        }
-
-    };
-
-
-    canv.addEventListener(
-        'mousedown', (event)=>{
-            drawer.isdrawing=true;
-            drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
-        }
-    )
-    document.addEventListener(
-        'mouseup', (event)=>{
-            drawer.isdrawing=false;
-            drawer.prevx = drawer.prevy = -1;
-            drawer.clear();
-        }
-    )
-    document.addEventListener(
-        'mousemove',
-        (event)=>{
-            drawer.drawPath(event.x-canv.offsetLeft, event.y-canv.offsetTop);
+    window.addEventListener('resize', 
+        ()=>{
+            alert('Изменение размеров окна не поддерживается. Приносим наши извенения');
+            window.location.href = "Shells.html";   
         }
     );
 
+    function start(){
+        let board = document.getElementById("board");
+        board.style.width = 9 * scaleParam + "px";
+        board.style.height = 16 * scaleParam + "px";
+        board.style.left = window.innerWidth / 2 - 4.5 * scaleParam + "px";
+        board.style.top = window.innerHeight / 2 - 8 * scaleParam + "px";
+    }
 
-    canv.addEventListener(
-        'touchstart', (event)=>{
-            let tch = event.changedTouches[0];
-            drawer.isdrawing=true;
-            drawer.drawPath(tch.pageX-canv.offsetLeft, tch.pageY-canv.offsetTop);
-        }
-    )
-    document.addEventListener(
-        'touchend', (event)=>{
-            drawer.isdrawing=false;
-            drawer.prevx = drawer.prevy = -1;
-            drawer.clear();
-        }
-    )
-    document.addEventListener(
-        'touchmove',
-        (event)=>{
-            console.log("wtf");
-            let tch = event.changedTouches[0];
-            drawer.drawPath(tch.pageX-canv.offsetLeft, tch.pageY-canv.offsetTop);
-        }
-    );
+    function scaleX(x){ // 0 <= x <= 9
+        return window.innerWidth/2-4.5*scaleParam + x*scaleParam; 
+    }
+
+    function scaleY(x){ // 0 <= y <= 16
+        return window.innerWidth/2-4.5*scaleParam + x*scaleParam; 
+    }
+
+    start();
+
 
 </script>
