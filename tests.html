@@ -4,55 +4,127 @@
 </head>
 
 <body style="margin: 0;">
-    <img src="paper.jpg">
+    <img id="paper" src="paper.jpg">
     <div id="board"></div>
 </body>
 </html>
 
 <style>
+    
     *{
-        position: fixed;
-    }
-    img{
-        width: 100vw;
-        height: 100vh;
+        touch-action: none;
     }
 
+    #paper{
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: -100;
+    }
     #board{
-        border: 7px #000 solid;
-        border-radius: 5px;
+        display: grid;
+        position: absolute;
+    }
+    .cell{
+        padding: 10%;
     }
 </style>
 
 <script> 
-    let scaleParam = 1000000;
-    scaleParam = Math.min(scaleParam, window.innerHeight*0.9/16);
-    scaleParam = Math.min(scaleParam, window.innerWidth*0.9/9);
+    let scaleParam = 0;
+    let board = document.getElementById("board");
+    board.style.border="1px #000 solid"
+    board.style.width="max-content";
+    
+    function resize(){
+        scaleParam =  window.innerWidth*0.9 / 9;
+        scaleParam = Math.min(window.innerHeight*0.9 / 8, scaleParam);
+        board.style.gridTemplateColumns = "repeat(9, " + scaleParam + "px)";
+        board.style.gridTemplateRows = "repeat(8, " + scaleParam + "px)";
+        board.style.left = window.innerWidth/2 - board.offsetWidth/2 + "px";
+        board.style.top = window.innerHeight/2 - board.offsetHeight/2 + "px";
+    }
 
-    window.addEventListener('resize', 
-        ()=>{
-            alert('Изменение размеров окна не поддерживается. Приносим наши извенения');
-            window.location.href = "Shells.html";   
+    resize();
+    window.addEventListener("resize", resize);    
+
+    for(let i=0;i<72;i++){
+        if(i%9==8){
+            board.innerHTML += "<div class='cell' id=cell_" + i + " style='width:80%;height:80%;'></div>";
+        }else
+            board.innerHTML += "<div class='cell' id=cell_" + i + " style='width:80%;height:80%;background:" + (i&1? "#000": "#fff") + "'></div>";
+    }
+    document.getElementById("cell_53").innerHTML = '<img src="whiteCh.svg" style="width: 100%; height: 100%;">'
+    document.getElementById("cell_62").innerHTML = '<img src="redCh.svg" style="width: 100%; height: 100%;">'
+    document.getElementById("cell_71").innerHTML = '<img src="cancel.svg" style="width: 100%; height: 100%;">'
+    
+    let command = 0; // 0 - nothing 
+                    // -1 - delete
+                    // 1 - place white
+                    // 2 - place red
+                    // 3 - place many whites
+                    // 4 - place many reds
+
+    function generImg(com){
+        return "<img style='width:100%;height:100%' src='" + (com == 1 || com == 3? "white":"red") + "Ch.svg'>"
+    }
+
+    let prev = "-1";
+    
+    for(let i=0;i<72;i++){
+        if(i%9==8){
+            if(i < 53)
+            document.getElementById("cell_"+i).addEventListener("click", ()=>{command=0});
+    
+            continue;
         }
-    );
+        document.getElementById("cell_"+i).addEventListener('click', function(event, el){
+            console.log(this.id, command, this.innerHTML);
+            if(command == 0){
+                if(this.innerHTML != ""){
+                    if(this.innerHTML.indexOf('red') >= 0){
+                        command = 2;
+                        prev = this.id;
+                    }else{
+                        command = 1;
+                        prev = this.id;
+                    }
+                    this.innerHTML = "";
+                }
+            }else if(command == -1){
+                this.innerHTML = "";
+            }else{
+                if(this.innerHTML != ""){
+                    alert("Нельзя ставить одну шашку поверх другой");
+                    if(prev != "-1"){
+                        document.getElementById(prev).innerHTML = generImg(command);
+                        command = 0;
+                        prev = "-1"
+                    }
+                }else{
+                    this.innerHTML += generImg(command);
+                    prev = "-1";
+                    if(command == 1 || command == 2)
+                        command = 0;
+                }
 
-    function start(){
-        let board = document.getElementById("board");
-        board.style.width = 9 * scaleParam + "px";
-        board.style.height = 16 * scaleParam + "px";
-        board.style.left = window.innerWidth / 2 - 4.5 * scaleParam + "px";
-        board.style.top = window.innerHeight / 2 - 8 * scaleParam + "px";
+            }
+        });
     }
 
-    function scaleX(x){ // 0 <= x <= 9
-        return window.innerWidth/2-4.5*scaleParam + x*scaleParam; 
-    }
+    document.getElementById("cell_53").addEventListener("click", function(event){
+        command=3;
+        prev="-1";
+    });
 
-    function scaleY(x){ // 0 <= y <= 16
-        return window.innerWidth/2-4.5*scaleParam + x*scaleParam; 
-    }
+    document.getElementById("cell_62").addEventListener("click", function(event){
+        command=4;
+        prev="-1";
+    });
 
-    start();
-
+    document.getElementById("cell_71").addEventListener("click", function(event){
+        command=-1;
+        prev="-1";
+    });
 
 </script>
