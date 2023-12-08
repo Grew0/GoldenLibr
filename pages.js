@@ -24,11 +24,11 @@ setTimeout(
 
             document.querySelector('html').innerHTML += 
             "<style>\
-h1{font-size: 4em}\
-p{font-size: 2em;}\
-li{font-size: 2em;}\
-.back{font-size: 3em;}\
-.interface{font-size: 3em}\
+h1{font-size: 5em}\
+p{font-size: 4em;}\
+li{font-size: 4em;}\
+.back{font-size: 4em;}\
+.interface{font-size: 4em}\
 </style>";
 
         }else{

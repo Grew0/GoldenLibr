@@ -9,3 +9,15 @@ https://stackoverflow.com/questions/1088544/get-element-from-within-an-iframe
 https://learn.javascript.ru/cookie?ysclid=lpn48ohoe7431985550
 https://loftschool.com/blog/posts/kak-podklyuchit-javascript-k-html
 https://stackoverflow.com/questions/5292372/how-to-pass-parameters-to-a-script-tag
+
+03.12.2023
+https://developer.mozilla.org/en-US/docs/Web/CSS/left
+https://ru.stackoverflow.com/questions/185214/%D0%9A%D0%B0%D0%BA-%D0%B2%D1%8B%D0%B2%D0%B5%D1%81%D1%82%D0%B8-%D0%B1%D0%BB%D0%BE%D0%BA-%D0%B7%D0%B0-%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D1%8B-%D1%80%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-css?ysclid=lpqodu1rbb908982024
+https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getLineDash
+https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
+https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event
+https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
+
+
+05.12.2023
+https://developer.mozilla.org/ru/docs/Web/API/Touch_events
