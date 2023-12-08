@@ -24,6 +24,7 @@ setTimeout(
 
             document.querySelector('html').innerHTML += 
             "<style>\
+body{padding: 5%}\
 h1{font-size: 5em}\
 p{font-size: 4em;}\
 li{font-size: 4em;}\
