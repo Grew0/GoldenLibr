@@ -309,3 +309,7 @@ footer address > *{
     from{ opacity: 1; }
     to{ opacity: 0; }
 }
+
+img{
+    user-select: none;
+}

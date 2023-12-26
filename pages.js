@@ -1,16 +1,10 @@
 let isLandscape = false;
 let rt = document.currentScript.getAttribute("rt");
 
-window.onmessage = function(event){
-    if(event.data == "from iframe"){
-        isLandscape = true;
-    }
-}
-
-window.top.postMessage("is phone", "*");
+document.querySelector("html").style.opacity = 0;
 
 setTimeout(
-    ()=>{
+    ()=>{        
         if(!isLandscape){
             
             let a = document.getElementById("back_from_iframe");
@@ -42,7 +36,17 @@ li{font-size: 25px;}\
 
 
         }
+        document.querySelector("html").style.opacity = 1;
     },
     15
 );
+
+
+window.onmessage = function(event){
+    if(event.data == "from iframe"){
+        isLandscape = true;
+    }
+}
+
+window.top.postMessage("is phone", "*");
 

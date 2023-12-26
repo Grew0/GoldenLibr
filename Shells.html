@@ -4,8 +4,10 @@
     <title>Библиотека Золотой академии</title>
     <link rel="icon" href="icon.svg">
     <link rel='stylesheet' href='Shells.css'>
+    <script src="particle.js"></script>
 </head>
 <body style="margin: 0;">
+    <div id="part_area"></div>
     <div id="iframeback" onclick="iframe_controller.closeifr()"></div>
     <div id="outifr">
         <iframe id="ifr">
@@ -108,9 +110,11 @@
                 iframe_controller.outifr.style.animationName = "appear2";
                 iframe_controller.ifrback.style.animationName = "appear2";
                 iframe_controller.outifr.style.marginLeft = "calc(" + window.innerWidth/2 +  "px - 30vw)";                
+                document.getElementById("part_area").style.opacity = 0;
             },
 
             closeifr: function(){
+                document.getElementById("part_area").style.opacity = 1;
                 iframe_controller.outifr.style.animationName = "disappear2";
                 iframe_controller.ifrback.style.animationName = "disappear2";
                 setTimeout(

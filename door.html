@@ -5,9 +5,11 @@
     <title>Библиотека Золотой академии</title>
     <link rel="icon" href="icon.svg">
     <link rel='stylesheet' href="door.css">
+    <script src="particle.js"></script>
 </head>
 
 <body>
+    <div id="part_area"></div>
     <main>
         <div id="door_shadow"></div>
         <img id="door_back" src="door.svg"> 
@@ -16,7 +18,18 @@
 </body>
 </html>
 
+<style>
+    *{
+        user-select: none;
+    }
+</style>
+
 <script>
+    document.addEventListener("click", (eve)=>{
+        console.log(eve.target);
+    })
+
+    console.log("FUn");
     function res(){
         let w = window.innerWidth, h = window.innerHeight;
         let door = document.getElementById("door");
