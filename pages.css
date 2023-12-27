@@ -26,3 +26,38 @@ li{
     bottom: 10px;
     background-color: #fff;
 }
+
+.dark_illusion{
+    animation-name: dark_illusion;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes dark_illusion {
+    from{text-shadow: #000 0 0, #000 0 0, #000 0 0;}
+    50%{text-shadow: rgba(0,0,0,0.5) 5px -4px, rgba(0,0,0,0.5) 3px 4px, rgba(0,0,0,0.5) -4.5px 3.5px;}
+    to{text-shadow: #000 0 0, #000 0 0, #000 0 0;}
+}
+
+.material{
+    animation-name: material;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    color: rgba(0,0,0,0);
+}
+@keyframes material {
+    from{text-shadow: #000 0 0, #000 0 0, #000 0 0;}
+    50%{text-shadow: #fc0 0 0 0px, #000 1px 1px, #000 1px -1px, #000 -1px 1px, #000 -1px -1px;}
+    to{text-shadow: #000 0 0, #000 0 0, #000 0 0;}
+}
+
+.energial{
+    animation-name: energial;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    color: rgba(0,0,0,0);
+}
+@keyframes energial {
+    from{text-shadow: #000 0 0, #000 0 0, #000 0 0;}
+    50%{text-shadow: #0cf 0 0 0px, #000 1px 1px, #000 1px -1px, #000 -1px 1px, #000 -1px -1px;}
+    to{text-shadow: #000 0 0, #000 0 0, #000 0 0;}
+}

@@ -33,6 +33,7 @@
 <style>
     *{
         touch-action: none;
+        user-select: none;
     }
     button{
         padding: 0;
@@ -164,5 +165,36 @@
             drawer.drawPath(tch.pageX-canv.offsetLeft, tch.pageY-canv.offsetTop);
         }
     );
+
+    function save(){
+        let img=ctx.getImageData(0, 0, canv.width, canv.height);
+        let str = "";
+        for(let i=0;i<img.data.length;i+=4){
+            if(img.data[i+3] > 150)
+                str += "1";
+            else str += "0";
+        }
+        window.localStorage.setItem("paint_img", str);
+        console.log(str);
+    }
+
+    function load(){
+        //console.log();
+        let str = window.localStorage.getItem("paint_img");
+        if(! str)return;
+        let img=ctx.getImageData(0, 0, canv.width, canv.height);
+        if(str.length != img.data.length/4)return;
+        for(let i=0;i<str.length;i++){
+            if(str[i] == '1')
+                img.data[i*4+3] = 255;
+        }
+        ctx.putImageData(img, 0, 0);
+    }
+
+    load();
+
+    window.onunload = ()=>{
+        save();
+    }
 
 </script>

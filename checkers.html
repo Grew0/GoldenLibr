@@ -6,6 +6,7 @@
 </head>
 
 <body style="margin: 0;">
+    <div id="part_area"></div>
     <img id="paper" src="paper.jpg">
     <div id="board"></div>
 </body>
@@ -31,6 +32,8 @@
         padding: 10%;
     }
 </style>
+
+<script src="particle.js"></script>
 
 <script> 
     let scaleParam = 0;
@@ -129,5 +132,25 @@
     });
 
     document.getElementById("cell_8").innerHTML = "<a href='Shells.html'><img src='paint/back.svg' style='width:100%;height:100%'></a>";
+
+    function save(){
+        let arr = document.getElementsByClassName("cell");
+        for(let i=0;i<arr.length;i++){
+            window.localStorage.setItem("checkers_"+arr[i].id, arr[i].innerHTML);
+        }
+    }
+
+    function load(){
+        let arr = document.getElementsByClassName("cell");
+        for(let i=0;i<arr.length;i++){
+            let tmp = window.localStorage.getItem("checkers_"+arr[i].id);
+            if(tmp) arr[i].innerHTML = tmp;
+        }
+    }
+
+    window.onunload = ()=>{
+        save();
+    }
+    load();
 
 </script>

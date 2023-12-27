@@ -107,18 +107,16 @@ main > h1{
     filter: hue-rotate(150deg);
 }#book6 .cover{
     filter: hue-rotate(561deg);
-}#book7 .cover{
-    filter: hue-rotate(789deg);
 }#book4 .cover{
     filter: hue-rotate(1000deg);
-}#book5 .cover{
-    filter: hue-rotate(180deg);
 }#book2 .cover{
     filter: hue-rotate(64deg) brightness(400%);
 }
 
 
 .book_cont p{
+    position: relative;
+    z-index: 1000;
     margin: 0;
     font-size: large;
     text-align: center;
@@ -128,15 +126,6 @@ main > h1{
     text-decoration: none;
     color: black;
 }
-
-.book a::after{
-    content: "Lol";
-    height: calc(2em);
-    opacity: 0;
-    display: block;
-    position: static;
-}
-
 
 footer{
     margin-top: 20vh;
@@ -227,10 +216,8 @@ footer address > *{
         grid-column-end: 4;
     }
     
-    #book7{
-        grid-row-start: 4;
-        grid-row-end: 5;
-        grid-column-start: 2;
+    #book4{
+        grid-column-start: 3;
         grid-column-end: 4;
     }
 
@@ -313,3 +300,12 @@ footer address > *{
 img{
     user-select: none;
 }
+
+.book:hover p{
+    display: block;
+    background: rgba(255, 255, 239, 0.75);
+    --shiftY: 0px;
+    transition: 1s;
+    transform: translateY(var(--shiftY)) scale(1.5);
+}
+

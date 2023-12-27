@@ -4,7 +4,6 @@
     <title>Библиотека Золотой академии</title>
     <link rel="icon" href="icon.svg">
     <link rel='stylesheet' href='Shells.css'>
-    <script src="particle.js"></script>
 </head>
 <body style="margin: 0;">
     <div id="part_area"></div>
@@ -24,57 +23,38 @@
         "
     >
     <main>
-        <h1>Добро пожаловать в филиал<div></div>библиотеки Золотой академии</h1>    
+        <!-- Добро пожаловать в филиал<div></div>библиотеки Золотой академии -->
+        <h1 id="Shells_header" style="opacity: 0;">A</h1>    
         <div class="galer">            
-            <div class="book_cont" id="book1"><div class="book">
+            <div class="book_cont" id="book1"><div class="book part_smoke">
                 <a href="door.html">
                     <img src="cover.svg" class="cover">
                     <img src="sheet.svg" class="sheet">
                     <p>Назад к двери</p>
                 </a>
             </div></div>
-            <div class="book_cont" id="book2"><div class="book">
+            <div class="book_cont" id="book2"><div class="book part_smoke">
                 <a>
                     <img src="cover.svg" class="cover">
                     <img src="sheet.svg" class="sheet">
                     <p>ПОУМ</p>
                 </a>
             </div></div>
-            <div class="book_cont" id="book3"><div class="book">
+            <div class="book_cont" id="book3"><div class="book part_smoke">
                 <a>
                     <img src="cover.svg" class="cover">
                     <img src="sheet.svg" class="sheet">
                     <p>Блокнот для записей</p>
                 </a>
             </div></div>
-            <div class="book_cont" id="book4"><div class="book">
+            <div class="book_cont" id="book4"><div class="book part_smoke">
                 <a>
                     <img src="cover.svg" class="cover">
                     <img src="sheet.svg" class="sheet">
                     <p>Шашки</p>
                 </a>
             </div></div>
-            <div class="book_cont" id="book5"><div class="book">
-                <a>
-                    <img src="cover.svg" class="cover">
-                    <img src="sheet.svg" class="sheet">
-                    <p><i>В разработке</i></p>
-                </a>
-            </div></div>
-            <div class="book_cont" id="book6"><div class="book">
-                <a>
-                    <img src="cover.svg" class="cover">
-                    <img src="sheet.svg" class="sheet">
-                    <p><i>В разработке</i></p>
-                </a>
-            </div></div>
-            <div class="book_cont" id="book7"><div class="book">
-                <a>
-                    <img src="cover.svg" class="cover">
-                    <img src="sheet.svg" class="sheet">
-                    <p><i>В разработке</i></p>
-                </a>
-            </div></div>
+            
 
 
         </div>
@@ -91,87 +71,5 @@
 
 </html>
 
-<script>    
-
-    let items = {
-        "book2": "res/ПОУМ/ПОУМ.html",
-    };
-
-    let iframe_controller = null;
-    let iframe_controller_backup = {
-            ifr: document.getElementById("ifr"), 
-            outifr: document.getElementById("outifr"),
-            ifrback: document.getElementById("iframeback"),
-
-            open: function(res){
-                iframe_controller.ifr.src = res
-                iframe_controller.outifr.style.display = "block";
-                iframe_controller.ifrback.style.display = "block";
-                iframe_controller.outifr.style.animationName = "appear2";
-                iframe_controller.ifrback.style.animationName = "appear2";
-                iframe_controller.outifr.style.marginLeft = "calc(" + window.innerWidth/2 +  "px - 30vw)";                
-                document.getElementById("part_area").style.opacity = 0;
-            },
-
-            closeifr: function(){
-                document.getElementById("part_area").style.opacity = 1;
-                iframe_controller.outifr.style.animationName = "disappear2";
-                iframe_controller.ifrback.style.animationName = "disappear2";
-                setTimeout(
-                    ()=>{
-                        iframe_controller.outifr.style.display = "none";
-                        iframe_controller.ifrback.style.display = "none";
-                    }, 250
-                );
-            }
-
-        };
-    function checksize(){
-        let w = window.innerWidth;
-        let h = window.innerHeight;
-
-        if(w >= h){
-            window.onmessage = function(event){
-                if(event.data == "close_window"){
-                    iframe_controller.closeifr();
-                }
-                if(event.data == "is phone" && iframe_controller != null){
-                    ifr.contentWindow.postMessage("from iframe", "*");
-                }
-            }
-
-            if(iframe_controller == null)
-                iframe_controller = iframe_controller_backup;
-            
-            for(let key in items){
-                let item = document.getElementById(key);
-                item.querySelector("a").onclick = function(){
-                    iframe_controller.open(items[key])
-                };
-                item.querySelector("a").removeAttribute("href");
-            }
-        }else{
-            iframe_controller = null;
-
-            for(let key in items){
-                let item = document.getElementById(key);
-                item.querySelector("a").href = items[key];
-            }
-        }
-        document.getElementById("book3").querySelector("div").querySelector("a").href = "paint/paint.html";
-        document.getElementById("book4").querySelector("div").querySelector("a").href = "checkers.html";
-
-        // let allbooks = document.getElementsByClassName("book");
-        // for(let i=0;i<allbooks.length;i++){
-        //     let p = allbooks[i].querySelector('a').querySelector('p');
-        //     p.style.left = allbooks[i].querySelector('a').offsetLeft + "px";
-        // }
-
-    }
-    checksize();
-    window.addEventListener('resize', ()=>{
-        checksize();
-        iframe_controller_backup.outifr.style.marginLeft = "calc(" + window.innerWidth/2 +  "px - 30vw)";
-    });
-    
-</script>
+<script src="particle.js"></script>
+<script src="Shells.js"></script>
