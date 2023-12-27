@@ -103,3 +103,4 @@ window.onload = function(){
     allTheCode();   
 }
 
+document.addEventListener("touch", ()=>{console.log("Fuck")});
