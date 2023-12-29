@@ -55,7 +55,7 @@ li{font-size: 25px;}\
         for(let i=0;i<waves.length;i++){
             let letters = waves[i].childNodes;
             for(let j=0;j<letters.length;j++){
-                letters[j].style.textShadow = "#000 0px " + Math.cos(time/300 + j*0.5)*5 + "px";
+                letters[j].style.textShadow = "#000 0px " + Math.cos(time/300 + j*0.5)*2 + "px";
                 letters[j].style.color = "rgba(0,0,0,0)";
                 letters[j].style.transition = "0.05s";
             }

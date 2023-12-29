@@ -192,7 +192,7 @@
     }
 
     load();
-
+    setInterval(save, 1000);
     window.onunload = ()=>{
         save();
     }
